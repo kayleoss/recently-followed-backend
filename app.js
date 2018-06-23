@@ -37,7 +37,7 @@ app.post('/save', (req, res, next) => {
 app.post('/compare', (req, res, next) => {
     User.findOne({username: req.body.user}, (err, user) => {
         if (!err && user) {
-            console.log(req.body.following);
+            
             var newFollows = [];
             var followlist = req.body.following;
 
@@ -46,8 +46,6 @@ app.post('/compare', (req, res, next) => {
                     newFollows.push(follow);
                 }
             });
-
-            console.log(newFollows);
             
             if (newFollows.length >= 1) {
                 res.send(JSON.stringify(newFollows));
