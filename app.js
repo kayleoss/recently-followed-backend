@@ -28,7 +28,7 @@ app.get('/', (req, res, next)=> {
 
 app.post('/save', (req, res, next) => {
 
-    User.update({'username': req.body.user}, {$set: {username: req.body.user, following: req.body.following}}, {upsert: true})
+    User.replaceOne({'username': req.body.user}, {$set: {username: req.body.user, following: req.body.following}}, {upsert: true})
     .then(res.send(JSON.stringify("You saved " + req.body.user + "'s users to the database!")))
     .catch(err => res.send(JSON.stringify(err)))
 
