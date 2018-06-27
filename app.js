@@ -42,7 +42,7 @@ app.post('/compare', (req, res, next) => {
             var followlist = req.body.following;
 
             followlist.map(follow => {
-                if ( user.following.indexOf(follow) <= -1 ) {
+                if ( user.following.indexOf(follow) === -1 ) {
                     newFollows.push(follow);
                 }
             });
